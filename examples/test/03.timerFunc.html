@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue源码剖析</title>
+    <script src="../../dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <h1>异步更新</h1>
+      <p id="p1">{{foo}}</p>
+    </div>
+    <script>
+      /**
+       * 创建实例
+       */
+      const app = new Vue({
+        el: "#demo",
+        data: { foo: "ready" },
+        mounted() {
+          setInterval(() => {
+            // 这里Watcher已经存在，因为是一个组件，第一次赋值后，Watcher存在，但数值改变了3次
+            // watcher.js中update()执行了3次，但run()只执行了一次
+            this.foo = Math.random();
+            this.foo = Math.random();
+            this.foo = Math.random();
+            // 异步行为，此时内容没变
+            console.log(p1.innerHTML);
+            this.$nextTick(() => {
+              // 这里才是最新的值，显示第三次的随机数
+              console.log(p1.innerHTML);
+            });
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>
