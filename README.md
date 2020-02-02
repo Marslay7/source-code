@@ -13,10 +13,8 @@
 
 - 打开指定文件：ctrl + p / command + p
 - 断点：开发者模式 Sources 下
-  - 单步执行 --- <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gbhyi7scvzj302g02gq2t.jpg" style="zoom:25%;" />
-  - 单步执行函数(进入函数) --- <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gbhyipyh1uj3028028glg.jpg" style="zoom:25%;" />
-- 查看调用栈(执行流程)：<img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gbhyhyicbaj30ik0aqdgx.jpg" style="zoom: 50%;" />
-- 定位源文件所在位置：右键点击 Reveal in sidebar，在侧边栏查找文件位置
+  - <img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gbhys4xqbjj30im0aitai.jpg" style="zoom:33%;" />
+  - 定位源文件所在位置：右键点击 Reveal in sidebar，在侧边栏查找文件位置
 
 #### 项目目录
 
