@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      v-if和v-for哪个优先级更高?如果两个同时出现,应该怎么优化得到更好的性能？
+    </title>
+    <script src="../../dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <h1>
+        v-if和v-for哪个优先级更高?如果两个同时出现,应该怎么优化得到更好的性能？
+      </h1>
+      <!-- 场景一 -->
+      <!-- <p v-for="child in children" v-if="isFolder">{{child.title}}</p> -->
+      <!-- 场景二 -->
+      <!-- <template v-if="isFolder">
+        <p v-for="child in children">{{child.title}}</p>
+      </template> -->
+      <!-- 场景三 -->
+      <p v-for="child in showChildren">{{child.title}}</p>
+    </div>
+    <script>
+      // 元素是否显示在数组元素内部定义
+      // 创建实例
+      const app = new Vue({
+        el: "#demo",
+        data() {
+          return {
+            children: [
+              {
+                title: "foo",
+                isShow: true
+              },
+              {
+                title: "bar",
+                isShow: false
+              },
+              {
+                title: "hahaha",
+                isShow: true
+              }
+            ]
+          };
+        },
+        mounted() {
+          console.log(Array.isArray(this.showChildren));
+        },
+        computed: {
+          showChildren() {
+            return this.children.filter(item => item.isShow);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
