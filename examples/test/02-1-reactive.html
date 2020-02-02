@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue源码剖析</title>
+    <script src="../../dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <h1>数据响应化</h1>
+      <p>{{obj.foo}}</p>
+    </div>
+    <script>
+      /**
+       * 创建实例
+       * 会有几个Observer,Dep,Watcher
+       * Observer 2个 一个对象产生一个Observer，这里data是一个对象，obj也是一个对象
+       * Dep 2个 和key值一一对应
+       * Watcher 1个 一个组件对应一个Watcher
+       */
+      const app = new Vue({
+        el: "#demo",
+        data: { obj: { foo: "foo" } },
+        mounted() {
+          setTimeout(() => {
+            this.obj.foo = "fooooo";
+          }, 1000);
+        }
+      });
+    </script>
+  </body>
+</html>
