@@ -115,6 +115,8 @@ function initProps(vm: Component, propsOptions: Object) {
 
 function initData(vm: Component) {
   let data = vm.$options.data;
+
+  // 如果data是函数，则执行之并且将其结果作为data选项的值
   data = vm._data = typeof data === "function" ? getData(data, vm) : data || {};
   if (!isPlainObject(data)) {
     data = {};
